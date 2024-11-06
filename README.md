@@ -1,5 +1,12 @@
 # TIP Worker ID Management
 
+## Extensions
+
+- Codeium
+- IntelliCode
+- IntelliCode API Usage Examples
+- IntelliPHP
+- Prettier
 
 ## Status
 
