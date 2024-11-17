@@ -14,7 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Sign Up | Worker ID Management</title>
+    <title>Sign In | Worker ID Management</title>
 
     <meta name="description" content="" />
 
@@ -43,12 +43,30 @@
   </head>
 
   <body>
-    <!-- Content -->
+    <!-- Modal -->
+    <div class="modal fade" id="submitModal" data-bs-backdrop="static" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="submitModalTitle">Success!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Welcome back to Worker ID Management!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onclick="Redirect()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Modal -->
 
+    <!-- Content -->
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
-          <!-- Sign Up Card -->
+          <!-- Sign In Card -->
           <div class="card px-sm-6 px-0">
             <div class="card-body">
               <!-- Logo -->
@@ -59,71 +77,17 @@
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-1">Sign Up</h4>
-              <p class="mb-6">Enter your details below to create your account.</p>
+              <h4 class="mb-1">Sign In</h4>
+              <p class="mb-6">Enter your details to login your account.</p>
+
+              <!-- ALert -->
+              <div id="alert-container" class="alert alert-danger text-center" role="alert" style="display: none;">
+                <span id="alert" class="text-danger"></span>
+              </div>
+              <!-- /Alert -->
 
               <!-- Form -->
-              <form id="formAuthentication" class="mb-6" action="index.html">
-                <!-- Name -->
-                <div class="mb-6">
-                  <label for="name" class="form-label">Name:</label>
-                  <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="bx bx-user"></i></span>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      name="name"
-                      placeholder="Enter your name"
-                      required
-                      autofocus />
-                  </div>
-                </div>
-                <!-- /Name -->
-
-                <!-- Email -->
-                <div class="mb-6">
-                  <label for="email" class="form-label">Email:</label>
-                  <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                    <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required
-                    autofocus />
-                  </div>
-                </div>
-                <!-- /Email -->
-
-                <!-- Department -->
-                <div class="mb-6">
-                  <label for="department" class="form-label">Department:</label>
-                  <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="bx bx-briefcase"></i></span>
-                    <select
-                      type="text"
-                      class="form-select"
-                      id="dropdown"
-                      name="department"
-                      required>
-                      <option value="">Select your department</option>
-                      <option value="1">Department 1</option>
-                      <option value="2">Department 2</option>
-                      <option value="3">Department 3</option>
-                      <option value="4">Department 4</option>
-                      <option value="5">Department 5</option>
-                      <option value="6">Department 6</option>
-                      <option value="7">Department 7</option>
-                      <option value="8">Department 8</option>
-                      <option value="9">Department 9</option>
-                    </select>
-                  </div>
-                </div>
-                <!-- /Department -->
-
+              <form id="formAuthentication" class="mb-6" onsubmit="return Alert(event);">
                 <!-- Username -->
                 <div class="mb-6">
                   <label for="username" class="form-label">Username:</label>
@@ -160,45 +124,40 @@
                 </div>
                 <!-- /Password -->
 
-                <!-- ConfirmPassword -->
-                <div class="mb-6 form-password-toggle">
-                  <label for="cpassword" class="form-label">Confirm Password:</label>
-                  <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="bx bx-lock"></i></span>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="cpassword"
-                      name="cpassword"
-                      placeholder="Enter your password"
-                      required
-                      autofocus
-                      aria-describedby="password" />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                <!-- Remember Me & Forgot Password -->
+                <div class="mb-8">
+                  <div class="d-flex justify-content-between mt-8">
+                    <div class="form-check mb-0 ms-2">
+                      <input class="form-check-input" type="checkbox" id="remember-me" />
+                      <label class="form-check-label" for="remember-me">Remember Me</label>
+                    </div>
+                    <a href="auth-forgot-password.html">
+                      <span>Forgot Password?</span>
+                    </a>
                   </div>
                 </div>
-                <!-- /Confirm Password -->
+                <!-- /Remember Me & Forgot Password -->
 
                 <!-- Submit -->
                 <div class="mb-6">
-                  <button class="btn btn-primary d-grid w-100">Sign up</button>
+                  <button class="btn btn-primary d-grid w-100" type="submit">Submit</button>
                 </div>
                 <!-- /Submit -->
+
               </form>
               <!-- /Form -->
               <p class="text-center">
-                <span>Already have an account?</span>
-                <a href="auth-login-basic.html">
-                  <span>Sign in here!</span>
+                <span>Don't have an account?</span>
+                <a href="auth-register.html">
+                  <span>Sign up now!</span>
                 </a>
               </p>
             </div>
           </div>
-          <!-- /Sign Up Card -->
+          <!-- Sign In Card -->
         </div>
       </div>
     </div>
-
     <!-- /Content -->
 
     <!-- Core JS -->
@@ -218,8 +177,43 @@
     <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
+    <script>
+      function ShowAlert(message) {
+        const alertContainer = document.getElementById('alert-container');
+        const alertText = document.getElementById('alert');
+        alertText.textContent = message;
+        alertContainer.style.display = 'block';
+      }
+      
+      function Redirect() {
+        window.location.href = "dashboard.html";
+      }
 
-    <!-- Place this tag before closing body tag for github widget button. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+      function Alert(event) {
+        if (CheckDetails()) {
+          const myModal = new bootstrap.Modal(document.getElementById('submitModal'), {
+            keyboard: false
+          });
+          myModal.show();
+        }
+        return false;
+      }
+      
+      function CheckDetails() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username === '' || password === '') {
+          ShowAlert("Please enter username!");
+          return false;
+        } else if (username !== "admin" && password !== "admin") {
+          ShowAlert("Invalid username or password!");
+          return false;
+        } else {
+          const alertContainer = document.getElementById('alert-container');
+          alertContainer.style.display = 'none';
+          return true;
+        }
+      }
+    </script>
   </body>
 </html>
