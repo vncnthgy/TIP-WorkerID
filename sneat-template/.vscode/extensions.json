@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "codeium.codeium",
+        "visualstudioexptteam.vscodeintellicode",
+        "visualstudioexptteam.intellicode-api-usage-examples",
+        "devsense.intelli-php-vscode",
+        "esbenp.prettier-vscode",
+        "ritwickdey.liveserver"
+    ]
+}
