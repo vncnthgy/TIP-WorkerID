@@ -141,7 +141,7 @@
                   <span class="input-group-text"><i class="bx bx-lock"></i></span>
                   <input type="password" class="form-control" id="password" name="password"
                     placeholder="Enter your password" required autofocus aria-describedby="password" />
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide toggle-icon" id="toggle-icon"></i></span>
                 </div>
               </div>
               <!-- /Password -->
@@ -153,7 +153,7 @@
                   <span class="input-group-text"><i class="bx bx-lock"></i></span>
                   <input type="password" class="form-control" id="cpassword" name="cpassword"
                     placeholder="Enter your password" required autofocus aria-describedby="password" />
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide toggle-icon" id="toggle-icon"></i></span>
                 </div>
               </div>
               <!-- /Confirm Password -->
@@ -237,7 +237,7 @@
         ShowAlert("Password must be at least 8 characters long!");
         return false;
       } else if (password !== confirmPassword) {
-        ShowAlert("Passwords do not match!");
+        ShowAlert("Password does not match!");
         return false;
       } else {
         const alertContainer = document.getElementById('alert-container');
@@ -245,6 +245,14 @@
         return true;
       }
     }
+
+    const togglePassword = document.querySelectorAll('.toggle-icon');
+    togglePassword.forEach(function(icon) {
+      icon.addEventListener('click', function() {
+        icon.classList.toggle('bx-hide');
+        icon.classList.toggle('bx-show');
+      });
+    });
   </script>
 </body>
 

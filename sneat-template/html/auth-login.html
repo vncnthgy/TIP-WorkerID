@@ -102,7 +102,7 @@
                   <span class="input-group-text"><i class="bx bx-lock"></i></span>
                   <input type="password" class="form-control" id="password" name="password"
                     placeholder="Enter your password" required autofocus aria-describedby="password" />
-                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide toggle-icon" id="toggle-icon"></i></span>
                 </div>
               </div>
               <!-- /Password -->
@@ -170,7 +170,7 @@
     }
 
     function Redirect() {
-      window.location.href = "dashboard.html";
+      window.location.href = "page-dashboard.html";
     }
 
     function Alert(event) {
@@ -189,7 +189,7 @@
       if (username === '' || password === '') {
         ShowAlert("Please enter username!");
         return false;
-      } else if (username !== "admin" && password !== "admin") {
+      } else if (username != "admin" && password != "admin") {
         ShowAlert("Invalid username or password!");
         return false;
       } else {
@@ -198,6 +198,14 @@
         return true;
       }
     }
+
+    const toggleIcons = document.querySelectorAll('.toggle-icon');
+    toggleIcons.forEach(function(icon) {
+      icon.addEventListener('click', function() {
+        icon.classList.toggle('bx-hide');
+        icon.classList.toggle('bx-show');
+      });
+    });
   </script>
 </body>
 
